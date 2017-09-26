@@ -106,10 +106,12 @@ fn get_content(config: &RenderConfig) -> hyper::Result<()> {
 }
 
 fn parse_hex_color_string(hex: &str, background_default: u8) -> Result<Rgba<u8>, &str> {
+    let lowered = hex.to_lowercase();
+
     Regex::new("^#([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})([a-z0-9]{2})?$")
         .map_err(|_| "Invalid regex")
         .and_then(|re| {
-            re.captures(hex)
+            re.captures(&lowered)
                 .ok_or("Incorrect color format")
                 .map(|captures|{
                     let mut color: [u8; 4] = [background_default; 4];

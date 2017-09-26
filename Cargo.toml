@@ -1,0 +1,15 @@
+[package]
+authors = ["Paul Cowie <paul.cowie@ntlworld.com>"]
+name = "email_to_image"
+version = "0.1.2"
+
+[dependencies]
+clap = "2.26.0"
+futures = "0.1.15"
+hyper = "0.11.2"
+image = "0.15.0"
+imageproc = "0.10.0"
+regex = "0.2.2"
+rusttype = "0.2.1"
+tokio-core = "0.1.9"
+zip = "0.2.6"
