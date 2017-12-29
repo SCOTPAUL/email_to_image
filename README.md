@@ -34,10 +34,20 @@ The default font size is `16`, background colour is `#ee6e73`, foreground colour
 Using the command:
 
 ```bash
-./email_to_image -b "#ee6e73" -c "#ffffff" -s 16 -f "Roboto" paul.cowie@ntlworld.com
+./email_to_image -b "#ee6e73" -c "#ffffff" -s 16 -f "Roboto" bob@thebuilder.com
 ```
 
 will produce an `email.png` file containing the required email image.
+
+## Comparison
+
+- The original text:
+
+![Original Text](https://raw.githubusercontent.com/SCOTPAUL/email_to_image/master/imgs/text.png)
+
+- The generated text:
+
+![Original Text](https://raw.githubusercontent.com/SCOTPAUL/email_to_image/master/imgs/generated.png)
 
 ## Building 
 
