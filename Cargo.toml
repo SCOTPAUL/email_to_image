@@ -2,6 +2,9 @@
 authors = ["Paul Cowie <paul.cowie@ntlworld.com>"]
 name = "email_to_image"
 version = "0.1.2"
+license = "GPL-3.0-or-later"
+description="Avoid email scrapers by converting addresses to images using Google Fonts"
+repository = "https://github.com/SCOTPAUL/email_to_image"
 
 [dependencies]
 clap = "2.26.0"
