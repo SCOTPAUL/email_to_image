@@ -59,7 +59,7 @@ fn render_text(config: &RenderConfig, font_data: &[u8]) -> std::io::Result<()>{
     let height = config.font_size as f32;
     let font = Vec::from(font_data);
 
-    let font = FontCollection::from_bytes(font).into_font().ok_or(std::io::Error::new(ErrorKind::Other, "Error loading font"))?;
+    let font = FontCollection::from_bytes(font)?.into_font()?;
 
     let layout = font.layout(config.email, Scale {x: height, y: height }, Point {x: 0f32, y:0f32});
     let mut total_width = 0u32;
@@ -97,7 +97,7 @@ fn get_content(config: &RenderConfig) -> hyper::Result<()> {
             }))
         }
         else {
-            Either::B(err((hyper::error::Error::Io(std::io::Error::new(ErrorKind::NotFound, format!("Font {} not found", config.font))))))
+            Either::B(err(hyper::error::Error::Io(std::io::Error::new(ErrorKind::NotFound, format!("Font {} not found", config.font)))))
         }
     });
 
@@ -176,9 +176,9 @@ fn main() {
                 Rgba([0u8, 0u8, 0u8,0u8])
             };
 
-            match get_content(&RenderConfig {email: email,
-                                             output_file: output_file, 
-                                             font: font, 
+            match get_content(&RenderConfig {email,
+                                             output_file,
+                                             font,
                                              font_size: size, 
                                              font_color: &font_color, 
                                              background_color: &bg_color}) {
